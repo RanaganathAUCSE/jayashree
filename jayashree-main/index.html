@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayashree — Fashion Designer Catalogue</title>
+  <meta name="description" content="Fashion designer catalogue and customisation for women, kids, bridal, ethnic, and western wear with help centre." />
+  <meta property="og:title" content="Jayashree — Fashion Designer Catalogue" />
+  <meta property="og:description" content="Fashion designer catalogue and customisation for women, kids, bridal, ethnic, and western wear with help centre." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a href="#/" class="nav-brand" data-link="#/">Jayashree</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#/" data-link="#/">Home</a>
+      <a href="#/women" data-link="#/women">Women</a>
+      <a href="#/kids" data-link="#/kids">Kids</a>
+      <a href="#/bridal" data-link="#/bridal">Bridal</a>
+      <a href="#/ethnic" data-link="#/ethnic">Ethnic</a>
+      <a href="#/western" data-link="#/western">Western</a>
+      <a href="#/customisation" data-link="#/customisation">Customisation</a>
+      <a href="#/help" data-link="#/help">Help</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-action-pill">
+        <button type="button" class="nav-auth-btn" id="openAuthBtn" aria-label="Login">
+          <svg class="nav-user-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="auth-btn-label">Login</span>
+        </button>
+        <span class="nav-pill-divider" aria-hidden="true"></span>
+        <a href="#/customisation" class="nav-enquire-btn" data-link="#/customisation">Enquire</a>
+      </div>
+      <button class="nav-menu" id="navMenuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      <div class="mobile-menu-header">
+        <span class="mobile-menu-brand">Jayashree</span>
+        <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="#/" class="mobile-menu-link" data-link="#/"><span>Home</span><span class="link-arrow">→</span></a>
+        <a href="#/women" class="mobile-menu-link" data-link="#/women"><span>Women</span><span
+            class="link-arrow">→</span></a>
+        <a href="#/kids" class="mobile-menu-link" data-link="#/kids"><span>Kids</span><span
+            class="link-arrow">→</span></a>
+        <a href="#/bridal" class="mobile-menu-link" data-link="#/bridal"><span>Bridal</span><span
+            class="link-arrow">→</span></a>
+        <a href="#/ethnic" class="mobile-menu-link" data-link="#/ethnic"><span>Ethnic</span><span
+            class="link-arrow">→</span></a>
+        <a href="#/western" class="mobile-menu-link" data-link="#/western"><span>Western</span><span
+            class="link-arrow">→</span></a>
+        <a href="#/customisation" class="mobile-menu-link" data-link="#/customisation"><span>Customisation</span><span
+            class="link-arrow">→</span></a>
+        <a href="#/help" class="mobile-menu-link" data-link="#/help"><span>Help</span><span
+            class="link-arrow">→</span></a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <button type="button" class="mobile-menu-auth-btn" id="mobileAuthBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="mobile-auth-label">Login / Sign Up</span>
+        </button>
+        <a href="#/customisation" class="mobile-menu-cta" data-link="#/customisation"><span>Enquire</span> <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+  <main class="page active" data-page="home">
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+      </div>
+      <!-- NEW: Passport-size fashion image strip -->
+      <div class="hero-image-strip">
+        <div class="hero-strip-track">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=300&q=80" alt="Fashion 1"
+            class="strip-img" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&q=80" alt="Fashion 2"
+            class="strip-img" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=300&q=80" alt="Fashion 3"
+            class="strip-img" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=300&q=80" alt="Fashion 4"
+            class="strip-img" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&q=80" alt="Fashion 5"
+            class="strip-img" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=300&q=80" alt="Fashion 6"
+            class="strip-img" loading="lazy">
+        </div>
+      </div>
+      <!-- END NEW -->
+      <div class="hero-text">
+        <h1>Designed for you.<br>Made to be yours.</h1>
+        <div class="hero-meta">
+          <div>
+            <div class="label">DESIGNER</div>
+            <div class="value">Jayashree</div>
+          </div>
+          <div>
+            <div class="label">EXPERIENCE</div>
+            <div class="value">3+ years</div>
+          </div>
+          <div>
+            <div class="label">SHOWS</div>
+            <div class="value">2025 – 2026</div>
+          </div>
+        </div>
+        <div class="hero-ctas">
+          <button type="button" class="view-collection-btn" id="openPopupBtn">
+            <span class="circle-layer circle-1"></span>
+            <span class="circle-layer circle-2"></span>
+            <span class="circle-layer circle-3"></span>
+            <span class="btn-text-default"><span>View Collection</span> <span class="btn-arrow">→</span></span>
+            <span class="btn-text-hover"><span>Explore</span> <span class="btn-arrow">→</span></span>
+          </button>
+          <a href="#/customisation" class="btn-secondary" data-link="#/customisation"><span>Customise your outfit</span> <span class="btn-arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="cat-intro">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="section-head">
+        <h3>Explore the collections</h3>
+        <p>Explore our collections across women, kids, bridal, ethnic and western wear.</p>
+      </div>
+      <div class="cat-buttons">
+        <a href="#/women" class="cat-btn" data-link="#/women">Women's Wear</a>
+        <a href="#/kids" class="cat-btn" data-link="#/kids">Kids' Wear</a>
+        <a href="#/bridal" class="cat-btn" data-link="#/bridal">Bridal Wear</a>
+        <a href="#/ethnic" class="cat-btn" data-link="#/ethnic">Ethnic Wear</a>
+        <a href="#/western" class="cat-btn" data-link="#/western">Western Wear</a>
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80"
+              alt="Women's fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=600&q=80"
+              alt="Kids' fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1594736797933-d040eba03634?w=600&q=80"
+              alt="Bridal fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1610030006620-6e8a33c83e27?w=600&q=80"
+              alt="Ethnic fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80"
+              alt="Western fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80"
+              alt="Women's fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=600&q=80"
+              alt="Kids' fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1594736797933-d040eba03634?w=600&q=80"
+              alt="Bridal fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1610030006620-6e8a33c83e27?w=600&q=80"
+              alt="Ethnic fashion"></div>
+          <div class="marquee-card"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80"
+              alt="Western fashion"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section"
+      style="background:var(--espresso);color:var(--ivory);text-align:center;padding:110px 24px 120px;">
+      <div class="content" style="position:relative;z-index:1;max-width:1100px;margin:0 auto;">
+        <h2
+          style="font-size:clamp(48px,6vw,82px);line-height:1.05;letter-spacing:-0.035em;color:var(--ivory);margin:0 auto 36px;font-weight:400;">
+          Create Yours</h2>
+        <p
+          style="color:var(--taupe);font-size:clamp(15px,1.4vw,18px);line-height:1.65;max-width:650px;margin:0 auto 42px;">
+          Choose your design, fabric, colour and size. We will help you make an outfit that fits you perfectly.</p>
+        <a href="#/customisation" class="btn-primary" data-link="#/customisation"
+          style="display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--ivory);color:var(--espresso);padding:20px 34px;min-width:280px;border-radius:999px;text-decoration:none;line-height:1;"><span>Create
+          your outfit</span> <span class="btn-arrow">→</span></a>
+      </div>
+    </section>
+  </main>
+  <main class="page" data-page="women">
+    <div class="back-bar"><button type="button" class="back-home" onclick="handleBack()"
+        style="padding-left:0;">← Back</button></div>
+    <section class="cat-hero">
+      <div class="blob"></div>
+      <h1>Women's Wear</h1>
+      <div class="sub">Clothes designed for everyday wear and special occasions.</div>
+    </section>
+    <div class="subcat-nav" id="women-subcat-nav"></div>
+    <div class="catalogue-wrap">
+      <div class="catalogue-grid" id="women-grid"></div>
+    </div>
+  </main>
+  <main class="page" data-page="kids">
+    <div class="back-bar"><button type="button" class="back-home" onclick="handleBack()"
+        style="padding-left:0;">← Back</button></div>
+    <section class="cat-hero">
+      <div class="blob"></div>
+      <h1>Kids' Wear</h1>
+      <div class="sub">Cute and comfortable clothes for kids.</div>
+    </section>
+    <div class="subcat-nav" id="kids-subcat-nav"></div>
+    <div class="catalogue-wrap">
+      <div class="catalogue-grid" id="kids-grid"></div>
+    </div>
+  </main>
+  <main class="page" data-page="bridal">
+    <div class="back-bar"><button type="button" class="back-home" onclick="handleBack()"
+        style="padding-left:0;">← Back</button></div>
+    <section class="cat-hero">
+      <div class="blob"></div>
+      <h1>Bridal Wear</h1>
+      <div class="sub">Special clothes for weddings and celebrations.</div>
+    </section>
+    <div class="subcat-nav" id="bridal-subcat-nav"></div>
+    <div class="catalogue-wrap">
+      <div class="catalogue-grid" id="bridal-grid"></div>
+    </div>
+  </main>
+  <main class="page" data-page="ethnic">
+    <div class="back-bar"><button type="button" class="back-home" onclick="handleBack()"
+        style="padding-left:0;">← Back</button></div>
+    <section class="cat-hero">
+      <div class="blob"></div>
+      <h1>Ethnic Wear</h1>
+      <div class="sub">Traditional clothes with a modern touch.</div>
+    </section>
+    <div class="subcat-nav" id="ethnic-subcat-nav"></div>
+    <div class="catalogue-wrap">
+      <div class="catalogue-grid" id="ethnic-grid"></div>
+    </div>
+  </main>
+  <main class="page" data-page="western">
+    <div class="back-bar"><button type="button" class="back-home" onclick="handleBack()"
+        style="padding-left:0;">← Back</button></div>
+    <section class="cat-hero">
+      <div class="blob"></div>
+      <h1>Western Wear</h1>
+      <div class="sub">Modern clothes for everyday wear and special occasions.</div>
+    </section>
+    <div class="subcat-nav" id="western-subcat-nav"></div>
+    <div class="catalogue-wrap">
+      <div class="catalogue-grid" id="western-grid"></div>
+    </div>
+  </main>
+  <main class="page" data-page="customisation">
+    <div class="back-bar"><button type="button" class="back-home" onclick="handleBack()"
+        style="padding-left:0;">← Back</button></div>
+    <section class="cat-hero">
+      <div class="blob"></div>
+      <div class="label">Customisation</div>
+      <h1>Your idea. Your design. Your outfit.</h1>
+      <div class="sub">Tell us what you want and we will help create your outfit.</div>
+    </section>
+    <section class="enquiry">
+      <div class="enquiry-wrap">
+        <div id="customisation-summary" style="display: none;"></div>
+        <form class="form-grid" id="enquiryForm" novalidate>
+          <!-- 1. FULL NAME * -->
+          <div class="form-field full">
+            <label for="f-name">FULL NAME <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" required placeholder="Enter your full name">
+            <span class="field-error" id="nameError" style="display: none;">Please enter your full name</span>
+          </div>
+
+          <!-- 2. CONTACT NUMBER * -->
+          <div class="form-field full">
+            <label for="f-phone">CONTACT NUMBER <span class="req">*</span></label>
+            <input type="tel" id="f-phone" name="phone" required placeholder="Enter your contact number">
+            <span class="field-error" id="phoneError" style="display: none;">Please enter your contact number</span>
+          </div>
+
+          <!-- 3. 🎨 COLOUR -->
+          <div class="form-field full">
+            <label for="f-colour">🎨 COLOUR</label>
+            <input type="text" id="f-colour" name="colour" placeholder="Tell us the colour or colour combination">
+          </div>
+
+          <!-- 4. 🧵 FABRIC -->
+          <div class="form-field full">
+            <label for="f-fabric">🧵 FABRIC</label>
+            <input type="text" id="f-fabric" name="fabric" placeholder="Tell us the fabric you prefer">
+          </div>
+
+          <!-- 5. 👗 DESIGN -->
+          <div class="form-field full">
+            <label for="f-design">👗 DESIGN</label>
+            <textarea id="f-design" name="design" rows="4" placeholder="Describe the design you have in mind"></textarea>
+          </div>
+
+          <!-- 6. 📐 MEASUREMENTS -->
+          <div class="form-field full">
+            <label for="f-measurements">📐 MEASUREMENTS</label>
+            <textarea id="f-measurements" name="measurements" rows="3" placeholder="Enter your measurements or describe the fit you want"></textarea>
+          </div>
+
+          <!-- 7. ✨ EMBELLISHMENTS -->
+          <div class="form-field full">
+            <label for="f-embellishment">✨ EMBELLISHMENTS</label>
+            <textarea id="f-embellishment" name="embellishment" rows="3" placeholder="Tell us about any embroidery, beads, lace, sequins or other details you want"></textarea>
+          </div>
+
+          <!-- 8. ADDITIONAL INFORMATION -->
+          <div class="form-field full">
+            <label for="f-requirements">ADDITIONAL INFORMATION</label>
+            <textarea id="f-requirements" name="requirements" rows="4" placeholder="Anything else you'd like us to know?"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-submit">
+            <button type="submit" id="enquirySubmitBtn"><span>Submit Enquiry</span> <span class="btn-arrow">→</span></button>
+          </div>
+          <div class="form-note">We will reply within 24–48 hours to talk about your design.</div>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <h3>Thank you. We’ve received your customisation request.</h3>
+          <p class="form-success-sub" style="font-size: 15px; color: var(--muted); margin: 10px 0 28px;">We’ll get back to you soon.</p>
+          <button type="button" class="success-home-btn" id="successHomeBtn">Home</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- HELP CENTRE PAGE -->
+  <main class="page" data-page="help">
+    <div class="back-bar"><button type="button" class="back-home" onclick="handleBack()"
+        style="padding-left:0;">← Back</button></div>
+    <section class="help-section">
+      <div class="help-wrap">
+        <div class="help-header">
+          <h1>How can we help?</h1>
+          <p class="help-sub">Tell us what you’re looking for, and we’ll help you find the right design.</p>
+        </div>
+        <div class="help-card" id="helpCard">
+          <form class="help-form" id="helpForm" novalidate>
+            <textarea id="helpText" name="helpText" placeholder="Tell us how we can help you..." rows="4"></textarea>
+            <div id="helpValidation" class="help-validation" style="display: none;">Please tell us how we can help.</div>
+            <div class="help-submit-container">
+              <button type="submit" class="help-submit-btn" id="helpSubmitBtn">Submit</button>
+            </div>
+          </form>
+          <div class="help-success" id="helpSuccess" style="display: none;">
+            <h3 class="help-success-title">Thank you. We’ve received your request.</h3>
+            <p class="help-success-sub">We’ll get back to you soon.</p>
+            <div class="help-success-action">
+              <a href="#/" class="help-home-btn" id="helpHomeBtn" data-link="#/">Back to Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <main class="page admin-page" data-page="admin">
+    <!-- Admin Login View -->
+    <div id="adminLoginView" style="display: none;">
+      <div class="admin-login-container">
+        <h2>Jayashree Admin</h2>
+        <p>Owner Login</p>
+        <form id="adminLoginForm">
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" name="email" id="adminLoginEmail" required placeholder="admin@example.com" autocomplete="username" value="admin@example.com">
+          </div>
+          <div class="form-field">
+            <label>Password</label>
+            <input type="password" name="password" id="adminLoginPassword" required placeholder="••••••••" autocomplete="current-password" value="admin123">
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Login to Dashboard</button>
+          <div class="admin-error" id="adminError"></div>
+        </form>
+        <div style="margin-top: 20px; text-align: center;">
+          <a href="#/" class="admin-back-store-link" style="color: var(--muted); font-size: 13px; text-decoration: none;">← Return to Store</a>
+        </div>
+      </div>
+    </div>
+    <!-- Admin Dashboard View (Matching Hand-Drawn Reference) -->
+    <div id="adminDashboardView" style="display: none;">
+      <div class="admin-dashboard-container">
+        <!-- Top bar with brand & logout -->
+        <div class="admin-top-bar">
+          <div class="admin-brand">Jayashree Admin</div>
+          <div class="admin-user-controls">
+            <a href="#/" class="admin-store-btn" title="View Store">View Store</a>
+            <button type="button" class="admin-logout-btn" id="adminLogoutBtn">Logout</button>
+          </div>
+        </div>
+        <!-- ONLY Three Simple Navigation Options from Sketch -->
+        <div class="admin-nav-bar" role="tablist" aria-label="Admin Navigation">
+          <button type="button" class="admin-nav-tab active" data-tab="orders" id="adminTabOrders" role="tab" aria-selected="true">
+            Orders
+          </button>
+          <button type="button" class="admin-nav-tab" data-tab="customisation" id="adminTabCustomisation" role="tab" aria-selected="false">
+            Customisation
+          </button>
+          <button type="button" class="admin-nav-tab" data-tab="help" id="adminTabHelp" role="tab" aria-selected="false">
+            Help
+          </button>
+        </div>
+        <!-- One Large Main Content Area from Sketch -->
+        <div class="admin-main-card">
+          <!-- Section 1: Orders -->
+          <div class="admin-section" id="adminSectionOrders">
+            <div id="adminOrdersContent"></div>
+          </div>
+          <!-- Section 2: Customisation -->
+          <div class="admin-section" id="adminSectionCustomisation" style="display: none;">
+            <div id="adminCustomisationContent"></div>
+          </div>
+          <!-- Section 3: Help -->
+          <div class="admin-section" id="adminSectionHelp" style="display: none;">
+            <div id="adminHelpContent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Clean Modal for viewing Complete Customisation Request / Full Help Message -->
+  <div class="admin-modal-overlay" id="adminModalOverlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+    <div class="admin-modal-card" id="adminModalCard">
+      <div class="admin-modal-header">
+        <h3 id="adminModalTitle">Details</h3>
+        <button type="button" class="admin-modal-close" id="adminModalCloseBtn" aria-label="Close">✕</button>
+      </div>
+      <div class="admin-modal-body" id="adminModalBody"></div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-dialog">
+      <h3 id="confirmTitle">Are you sure?</h3>
+      <p id="confirmMessage">This action cannot be undone.</p>
+      <div class="confirm-actions">
+        <button type="button" class="confirm-cancel" id="confirmCancel">Cancel</button>
+        <button type="button" class="confirm-action" id="confirmOk">Confirm</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">Jayashree</div>
+        <div class="sub">Fashion Designer</div>
+        <p>Jayashree is a fashion designer creating simple and well-designed clothes for women, kids and special
+          occasions.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#/" data-link="#/">Home</a></li>
+          <li><a href="#/customisation" data-link="#/customisation">Customisation</a></li>
+          <li><a href="#/login" class="footer-auth-link" id="footerAuthLink">Login / Sign Up</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Catalogue</h5>
+        <ul>
+          <li><a href="#/women" data-link="#/women">Women's Wear</a></li>
+          <li><a href="#/kids" data-link="#/kids">Kids' Wear</a></li>
+          <li><a href="#/bridal" data-link="#/bridal">Bridal Wear</a></li>
+          <li><a href="#/ethnic" data-link="#/ethnic">Ethnic Wear</a></li>
+          <li><a href="#/western" data-link="#/western">Western Wear</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+919177976293">+91 9177976293</a></li>
+          <li><a href="mailto:designerjayashree9@gmail.com">designerjayashree9@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/sweet_y7673?stkn=MWJsczkzMWcyZW8yYQ%3D%3D&utm_source=ig_contact_invite" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Jayashree — All Rights Reserved</div>
+    </div>
+  </footer>
+  <!-- Customer Authentication Screen (Login / Sign Up) -->
+  <div class="auth-modal-overlay" id="authModalOverlay" role="dialog" aria-modal="true" aria-labelledby="authHeading">
+    <div class="auth-modal" id="authModalCard">
+      <button type="button" class="auth-close" id="authCloseBtn" aria-label="Close authentication screen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <!-- Authenticated Profile View (when signed in) -->
+      <div class="auth-user-view" id="authUserView" style="display: none;">
+        <div class="auth-user-badge">
+          <span id="authUserInitials">J</span>
+        </div>
+        <h2 class="auth-heading">Your Account</h2>
+        <p class="auth-sub" id="authUserEmail">user@example.com</p>
+        <div class="auth-user-status-pill">Active Customer</div>
+        <div class="auth-user-actions">
+          <button type="button" class="btn-card btn-card-primary" id="authSignOutBtn" style="width: 100%;">Sign Out</button>
+        </div>
+      </div>
+      <!-- Main Login / Sign Up Form View -->
+      <div class="auth-form-view" id="authFormView">
+        <!-- Segmented Tab Switcher (Login vs Sign Up) -->
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="auth-tab active" id="authTabLogin" role="tab" aria-selected="true" data-mode="login">Login</button>
+          <button type="button" class="auth-tab" id="authTabSignUp" role="tab" aria-selected="false" data-mode="signup">Sign Up</button>
+        </div>
+        <div class="auth-header">
+          <h2 class="auth-heading" id="authHeading">Welcome Back</h2>
+        </div>
+        <!-- Social Login / Sign Up Options -->
+        <div class="auth-social-list">
+          <button type="button" class="auth-social-btn" data-provider="Google">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+            <span>Continue with Google</span>
+          </button>
+          <button type="button" class="auth-social-btn" data-provider="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span>Continue with Facebook</span>
+          </button>
+          <button type="button" class="auth-social-btn" data-provider="Apple">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.65 1.35-.55.63-.99 1.68-.86 2.7.99.08 2.02-.45 2.59-1.2"/>
+            </svg>
+            <span>Continue with Apple</span>
+          </button>
+        </div>
+        <div class="auth-divider">
+          <span>Or</span>
+        </div>
+        <!-- Email Authentication Form -->
+        <form class="auth-form" id="authEmailForm">
+          <div class="auth-input-group">
+            <label for="authEmailInput">Email address</label>
+            <input type="email" id="authEmailInput" name="email" required placeholder="name@example.com" autocomplete="email" class="auth-input">
+          </div>
+          <button type="submit" class="auth-submit-btn" id="authSubmitBtn">
+            Login
+          </button>
+          <div class="auth-feedback" id="authFeedback" style="display: none;"></div>
+        </form>
+        <!-- Dynamic Switcher -->
+        <div class="auth-footer-switch" id="authFooterSwitch">
+          <span id="authSwitchPrompt">Don't have an account?</span>
+          <button type="button" id="authSwitchAction" class="auth-toggle-link">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delivery Details & Order Checkout Modal -->
+  <div class="checkout-modal-overlay" id="checkoutModalOverlay" role="dialog" aria-modal="true" aria-labelledby="checkoutHeading">
+    <div class="checkout-modal" id="checkoutModal">
+      <button type="button" class="checkout-close" id="checkoutCloseBtn" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- View 1: Delivery Details Form & Order Summary -->
+      <div class="checkout-view" id="checkoutDeliveryView">
+        <div class="checkout-header">
+          <h2 class="checkout-heading" id="checkoutHeading">Delivery Details</h2>
+          <p class="checkout-sub">Enter your address and contact details to complete your order.</p>
+        </div>
+
+        <!-- Product Preview Bar -->
+        <div class="checkout-product-badge" id="checkoutProductBadge">
+          <div class="checkout-badge-info">
+            <span class="checkout-badge-name" id="badgeProductName">Design</span>
+            <span class="checkout-badge-meta">Size: <strong id="badgeProductSize">-</strong></span>
+          </div>
+          <div class="checkout-badge-price" id="badgeProductPrice">₹0</div>
+        </div>
+
+        <form id="checkoutDeliveryForm" class="checkout-form" novalidate>
+          <div class="checkout-form-grid">
+            <!-- 1. State / UT Dropdown -->
+            <div class="checkout-field" id="wrap-deliveryState">
+              <label for="deliveryState">State *</label>
+              <select id="deliveryState" name="state" class="checkout-select" autocomplete="address-level1">
+                <option value="">Select your state</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Ladakh">Ladakh</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Puducherry">Puducherry</option>
+              </select>
+              <div class="field-error-msg" id="err-deliveryState">State is required.</div>
+            </div>
+
+            <!-- 2. District Dropdown -->
+            <div class="checkout-field" id="wrap-deliveryDistrict">
+              <label for="deliveryDistrict">District *</label>
+              <select id="deliveryDistrict" name="district" class="checkout-select" disabled>
+                <option value="">Select your district</option>
+              </select>
+              <div class="field-error-msg" id="err-deliveryDistrict">District is required.</div>
+            </div>
+
+            <!-- 3. City / Town / Location (Manual Input) -->
+            <div class="checkout-field" id="wrap-deliveryCity">
+              <label for="deliveryCity">City / Town / Location *</label>
+              <input type="text" id="deliveryCity" name="city" placeholder="Enter your city / town / location" autocomplete="address-level2">
+              <div class="field-error-msg" id="err-deliveryCity">City / Town / Location is required.</div>
+            </div>
+
+            <!-- 4. PIN Code -->
+            <div class="checkout-field" id="wrap-deliveryPin">
+              <label for="deliveryPin">PIN Code *</label>
+              <input type="text" id="deliveryPin" name="pinCode" placeholder="Enter PIN code" maxlength="6" inputmode="numeric">
+              <div class="field-error-msg" id="err-deliveryPin">Valid 6-digit PIN code required.</div>
+            </div>
+
+            <!-- 5. Area / Locality -->
+            <div class="checkout-field" id="wrap-deliveryArea">
+              <label for="deliveryArea">Area *</label>
+              <input type="text" id="deliveryArea" name="area" placeholder="Enter your area">
+              <div class="field-error-msg" id="err-deliveryArea">Area is required.</div>
+            </div>
+
+            <!-- 6. Email Address -->
+            <div class="checkout-field" id="wrap-deliveryEmail">
+              <label for="deliveryEmail">Email Address *</label>
+              <input type="email" id="deliveryEmail" name="email" placeholder="Enter your email address" autocomplete="email">
+              <div class="field-error-msg" id="err-deliveryEmail">Valid email address required.</div>
+            </div>
+
+            <!-- 7. Full Address -->
+            <div class="checkout-field full" id="wrap-deliveryAddress">
+              <label for="deliveryAddress">Full Address *</label>
+              <input type="text" id="deliveryAddress" name="fullAddress" placeholder="Enter your full delivery address" autocomplete="street-address">
+              <div class="field-error-msg" id="err-deliveryAddress">Full address is required.</div>
+            </div>
+
+            <!-- Delivery Estimate Reserved Slot (keeps modal height constant before & after estimate appears) -->
+            <div class="checkout-delivery-slot full" id="checkoutDeliverySlot">
+              <div class="checkout-logistics-card" id="checkoutLogisticsCard" style="display: none;">
+                <div class="logistics-card-origin">
+                  <span class="logistics-origin-dot"></span>
+                  <span>Estimated delivery: <strong id="logisticsDeliveryDate" style="color: var(--espresso);">16–18 October 2026</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary Section (Section 5 requirement) -->
+          <div class="checkout-summary-card" id="checkoutSummaryCard" style="display: none;">
+            <div class="checkout-summary-header">
+              <span class="checkout-summary-title">Order Summary</span>
+              <span class="checkout-estimate-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="3" width="15" height="13"></rect>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                  <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                  <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                Estimated delivery: <strong id="summaryEstimate">16–18 October 2026</strong>
+              </span>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Product name:</span>
+              <strong id="summaryProductName">Product</strong>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Selected size:</span>
+              <strong id="summarySize">-</strong>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Delivery address:</span>
+              <span class="summary-val-truncate" id="summaryAddress">Pending address details</span>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Email address:</span>
+              <span class="summary-val-truncate" id="summaryEmail">Pending email</span>
+            </div>
+            <div class="checkout-summary-row total-row">
+              <span>Price:</span>
+              <strong id="summaryPrice">₹0</strong>
+            </div>
+          </div>
+
+          <button type="submit" class="checkout-submit-btn" id="checkoutSubmitBtn">
+            <span>Buy Now</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- View 2: Payment Success / Order Confirmation -->
+      <div class="checkout-view" id="checkoutSuccessView" style="display: none;">
+        <div class="checkout-success-wrap">
+          <div class="checkout-success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h2 class="checkout-success-title">Order confirmed!</h2>
+          <p class="checkout-success-sub">Your payment was successful.</p>
+
+          <div class="checkout-success-email-notice">
+            <span>Order confirmation sent to:</span> <strong id="confirmEmailDisplay">customer@example.com</strong>
+          </div>
+
+          <div class="checkout-estimate-banner">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            <span>Estimated delivery: <strong id="confirmEstimate">16–18 October 2026</strong></span>
+          </div>
+
+          <div class="checkout-success-details">
+            <div class="checkout-detail-row">
+              <span class="detail-label">Order Ref</span>
+              <span class="detail-val" id="confirmOrderId">#JF-000000</span>
+            </div>
+            <div class="checkout-detail-row">
+              <span class="detail-label">Product</span>
+              <span class="detail-val" id="confirmProduct">-</span>
+            </div>
+            <div class="checkout-detail-row">
+              <span class="detail-label">Size</span>
+              <span class="detail-val" id="confirmSize">-</span>
+            </div>
+            <div class="checkout-detail-row">
+              <span class="detail-label">Amount</span>
+              <span class="detail-val" id="confirmAmount">-</span>
+            </div>
+            <div class="checkout-detail-row">
+              <span class="detail-label">Delivery Address</span>
+              <span class="detail-val" id="confirmAddress">-</span>
+            </div>
+          </div>
+
+          <button type="button" class="checkout-submit-btn" id="confirmCloseBtn">
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-popup-overlay" id="categoryPopupOverlay" role="dialog" aria-modal="true"
+    aria-labelledby="popupHeading">
+    <div class="category-popup">
+      <button type="button" class="popup-close" id="popupClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg></button>
+      <h2 class="popup-heading" id="popupHeading">View Collection</h2>
+      <p class="popup-sub">Choose a category to explore our designs.</p>
+      <div class="popup-categories">
+        <a href="#/women" class="popup-cat" data-route="#/women"><span>Women</span><span class="arrow">→</span></a>
+        <a href="#/kids" class="popup-cat" data-route="#/kids"><span>Kids</span><span class="arrow">→</span></a>
+        <a href="#/bridal" class="popup-cat" data-route="#/bridal"><span>Bridal</span><span class="arrow">→</span></a>
+        <a href="#/ethnic" class="popup-cat" data-route="#/ethnic"><span>Ethnic</span><span class="arrow">→</span></a>
+        <a href="#/western" class="popup-cat" data-route="#/western"><span>Western</span><span
+            class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+  <!-- External JavaScript Module -->
+  <script type="module" src="/js/script.js"></script>
+</body>
+</html>

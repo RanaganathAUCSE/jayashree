@@ -1,0 +1,6 @@
+{
+  "name": "Jayashree — Fashion Designer Catalogue",
+  "description": "Fashion designer catalogue and customisation for women, kids, bridal, ethnic, and western wear with help centre.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
