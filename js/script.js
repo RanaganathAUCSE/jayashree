@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, addDoc, serverTimestamp, query, where, orderBy, onSnapshot, doc, updateDoc, deleteDoc, writeBatch, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { locationService } from "./location/index.js";
+import { BRIDAL_CATEGORIES, ETHNIC_CATEGORIES, KIDS_CATEGORIES, WESTERN_CATEGORIES, WOMEN_CATEGORIES } from "./catalogData.js";
 
 const firebaseConfig = {
   apiKey: "YOUR_FIREBASE_API_KEY",
@@ -35,29 +36,6 @@ window.fbFnsLoaded = true;
 
 if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 
-const IMG = {
-  kurti: "https://images.unsplash.com/photo-1617627191906-60cb1ecd4226?w=800&q=85",
-  dress: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=85",
-  midi: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=85",
-  maxi: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85",
-  party: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=85",
-  coord: "https://images.unsplash.com/photo-1583846783214-7229a91b20ed?w=800&q=85",
-  western: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&q=85",
-  jumpsuit: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=85",
-  anarkali: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=85",
-  ethnic: "https://images.unsplash.com/photo-1610030006620-6e8a33c83e27?w=800&q=85",
-  sharara: "https://images.unsplash.com/photo-1617059062244-1fcae2a14b7c?w=800&q=85",
-  lehenga: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=800&q=85",
-  blouse: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=800&q=85",
-  bridal: "https://images.unsplash.com/photo-1594736797933-d040eba03634?w=900&q=85",
-  gown: "https://images.unsplash.com/photo-1610030006670-d1e4ba6662c7?w=900&q=85",
-  kids: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=800&q=85",
-  kidsLehenga: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=800&q=85",
-  kidsParty: "https://images.unsplash.com/photo-1596870230754-5e87c738a8ac?w=800&q=85",
-  kidsKurta: "https://images.unsplash.com/photo-1543854589-fdd815f176e0?w=800&q=85",
-  women: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=85"
-};
-
 const DEFAULT_SIZES = ["XS", "S", "M", "L", "XL", "XXL"];
 const KIDS_SIZES = [
   "1-2 Years", "2-3 Years", "3-4 Years", "4-5 Years",
@@ -67,302 +45,29 @@ const KIDS_SIZES = [
 
 const CATALOGUE_DATA = {
   women: {
-    defaultCat: 'kurtis', catLabel: 'Women',
-    categories: {
-      kurtis: {
-        label: 'Kurtis', items: [
-          { name: "Straight Kurtis", price: "₹699", img: IMG.kurti, sizes: DEFAULT_SIZES },
-          { name: "A-Line Kurtis", price: "₹799", img: IMG.kurti, sizes: DEFAULT_SIZES },
-          { name: "Anarkali Kurtis", price: "₹999", img: IMG.anarkali, sizes: DEFAULT_SIZES },
-          { name: "Flared Kurtis", price: "₹999", img: IMG.kurti, sizes: DEFAULT_SIZES },
-          { name: "Short Kurtis", price: "₹499", img: IMG.kurti, sizes: DEFAULT_SIZES },
-          { name: "Designer Kurtis", price: "₹1299", img: IMG.kurti, sizes: DEFAULT_SIZES }
-        ]
-      },
-      dresses: {
-        label: 'Dresses', items: [
-          { name: "Casual Dresses", price: "₹1599", img: IMG.dress, sizes: DEFAULT_SIZES },
-          { name: "Midi Dresses", price: "₹1399", img: IMG.midi, sizes: DEFAULT_SIZES },
-          { name: "Maxi Dresses", price: "₹1399", img: IMG.maxi, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Dresses", price: "₹1999", img: IMG.party, sizes: DEFAULT_SIZES },
-          { name: "Designer Dresses", price: "₹1999", img: IMG.dress, sizes: DEFAULT_SIZES },
-          { name: "Evening Dresses", price: "₹1299", img: IMG.midi, sizes: DEFAULT_SIZES }
-        ]
-      },
-      tops: {
-        label: 'Tops & Blouses', items: [
-          { name: "Casual Tops", price: "₹499", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Designer Tops", price: "₹1999", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Crop Tops", price: "₹499", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Peplum Tops", price: "₹799", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Saree Blouses", price: "₹399", img: IMG.blouse, sizes: DEFAULT_SIZES },
-          { name: "Designer Blouses", price: "₹2999", img: IMG.blouse, sizes: DEFAULT_SIZES }
-        ]
-      },
-      skirts: {
-        label: 'Skirts', items: [
-          { name: "A-Line Skirts", price: "₹499", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Flared Skirts", price: "₹899", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Midi Skirts", price: "₹599", img: IMG.midi, sizes: DEFAULT_SIZES },
-          { name: "Long Skirts", price: "₹699", img: IMG.maxi, sizes: DEFAULT_SIZES },
-          { name: "Designer Skirts", price: "₹799", img: IMG.women, sizes: DEFAULT_SIZES }
-        ]
-      },
-      trousers: {
-        label: 'Trousers & Pants', items: [
-          { name: "Straight Pants", price: "₹999", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Wide-Leg Pants", price: "₹999", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Palazzo Pants", price: "₹899", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Cigarette Pants", price: "₹799", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Designer Trousers", price: "₹999", img: IMG.coord, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'co-ords': {
-        label: 'Co-Ord Sets', items: [
-          { name: "Top & Skirt Sets", price: "₹999", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Top & Trouser Sets", price: "₹1399", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Crop Top Sets", price: "₹899", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Co-Ords", price: "₹1299", img: IMG.coord, sizes: DEFAULT_SIZES }
-        ]
-      },
-      partywear: {
-        label: 'Party Wear', items: [
-          { name: "Party Dresses", price: "₹5999", img: IMG.party, sizes: DEFAULT_SIZES },
-          { name: "Designer Gowns", price: "₹2999", img: IMG.gown, sizes: DEFAULT_SIZES },
-          { name: "Evening Wear", price: "₹3999", img: IMG.midi, sizes: DEFAULT_SIZES },
-          { name: "Embellished Outfits", price: "₹4999", img: IMG.party, sizes: DEFAULT_SIZES }
-        ]
-      }
-    }
+    defaultCat: 'kurtis',
+    catLabel: 'Women',
+    categories: WOMEN_CATEGORIES
   },
   kids: {
-    defaultCat: 'girls-dresses', catLabel: 'Kids',
-    categories: {
-      'girls-dresses': {
-        label: "Girls' Dresses", items: [
-          { name: "Frocks", price: "₹1999", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Casual Dresses", price: "₹999", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Party Dresses", price: "₹2999", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Designer Dresses", price: "₹1999", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Flared Dresses", price: "₹1499", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] }
-        ]
-      },
-      'ethnic-kids': {
-        label: "Ethnic Kids' Wear", items: [
-          { name: "Lehenga Sets", price: "₹999", img: IMG.kidsLehenga, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Pavadai Sets", price: "₹1599", img: IMG.kidsKurta, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Anarkali Sets", price: "₹799", img: IMG.kidsLehenga, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Kurta Sets", price: "₹899", img: IMG.kidsKurta, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Traditional Dresses", price: "₹1999", img: IMG.kidsKurta, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] }
-        ]
-      },
-      'kids-party': {
-        label: 'Party Wear', items: [
-          { name: "Birthday Outfits", price: "₹999", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Celebration Dresses", price: "₹1499", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Designer Frocks", price: "₹1999", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Special Occasion Outfits", price: "₹1999", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] }
-        ]
-      },
-      'kids-casual': {
-        label: 'Casual Wear', items: [
-          { name: "Casual Dresses", price: "₹299", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Tops & Skirts", price: "₹499", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Co-Ord Sets", price: "₹399", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Comfortable Daily Wear", price: "₹499", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] }
-        ]
-      },
-      'kids-custom': {
-        label: "Customized Kids' Wear", items: [
-          { name: "Customized Frocks", price: "₹799", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Customized Dresses", price: "₹599", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Customized Ethnic Wear", price: "₹699", img: IMG.kidsKurta, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Customized Party Outfits", price: "₹999", img: IMG.kidsParty, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] },
-          { name: "Size Customization", price: "₹1599", img: IMG.kids, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"] }
-        ]
-      }
-    }
+    defaultCat: 'girls-dresses',
+    catLabel: 'Kids',
+    categories: KIDS_CATEGORIES
   },
   bridal: {
-    defaultCat: 'bridal-lehengas', catLabel: 'Bridal',
-    categories: {
-      'bridal-lehengas': {
-        label: 'Bridal Lehengas', items: [
-          { name: "Traditional Bridal Lehengas", price: "₹9999–₹69999", img: IMG.bridal, sizes: DEFAULT_SIZES },
-          { name: "Designer Lehengas", price: "₹9999–₹59999", img: IMG.bridal, sizes: DEFAULT_SIZES },
-          { name: "Embroidered Lehengas", price: "₹9999–₹29999", img: IMG.lehenga, sizes: DEFAULT_SIZES },
-          { name: "Reception Lehengas", price: "₹9999–₹39999", img: IMG.bridal, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'bridal-blouses': {
-        label: 'Bridal Blouses', items: [
-          { name: "Designer Blouses", price: "₹1999–₹9999", img: IMG.blouse, sizes: DEFAULT_SIZES },
-          { name: "Embellished Blouses", price: "₹2999–₹8999", img: IMG.blouse, sizes: DEFAULT_SIZES },
-          { name: "Traditional Blouses", price: "₹1599–₹6999", img: IMG.blouse, sizes: DEFAULT_SIZES },
-          { name: "Customized Blouses", price: "₹999–₹4999", img: IMG.blouse, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'bridal-gowns': {
-        label: 'Bridal Gowns', items: [
-          { name: "Wedding Gowns", price: "₹9999–₹29999", img: IMG.gown, sizes: DEFAULT_SIZES },
-          { name: "Reception Gowns", price: "₹6999–₹9999", img: IMG.gown, sizes: DEFAULT_SIZES },
-          { name: "Designer Gowns", price: "₹5999–₹9999", img: IMG.gown, sizes: DEFAULT_SIZES },
-          { name: "Embellished Gowns", price: "₹3999–₹8999", img: IMG.gown, sizes: DEFAULT_SIZES }
-        ]
-      },
-      engagement: {
-        label: 'Engagement Wear', items: [
-          { name: "Engagement Dresses", price: "₹9999–₹39999", img: IMG.party, sizes: DEFAULT_SIZES },
-          { name: "Engagement Lehengas", price: "₹9999–₹49999", img: IMG.lehenga, sizes: DEFAULT_SIZES },
-          { name: "Designer Outfits", price: "₹9999–₹29999", img: IMG.party, sizes: DEFAULT_SIZES }
-        ]
-      },
-      reception: {
-        label: 'Reception Wear', items: [
-          { name: "Reception Gowns", price: "₹9999–₹29999", img: IMG.gown, sizes: DEFAULT_SIZES },
-          { name: "Designer Lehengas", price: "₹9999–₹29999", img: IMG.lehenga, sizes: DEFAULT_SIZES },
-          { name: "Indo-Western Outfits", price: "₹9999–₹19999", img: IMG.party, sizes: DEFAULT_SIZES }
-        ]
-      },
-      bridesmaid: {
-        label: 'Bridesmaid Wear', items: [
-          { name: "Bridesmaid Dresses", price: "₹9999", img: IMG.party, sizes: DEFAULT_SIZES },
-          { name: "Bridesmaid Lehengas", price: "₹8999", img: IMG.lehenga, sizes: DEFAULT_SIZES },
-          { name: "Coordinated Outfits", price: "₹9999", img: IMG.party, sizes: DEFAULT_SIZES }
-        ]
-      },
-      accessories: {
-        label: 'Bridal Accessories', items: [
-          { name: "Dupattas", price: "₹699", img: IMG.lehenga, sizes: ["Free Size"] },
-          { name: "Veils", price: "₹999", img: IMG.gown, sizes: ["Free Size"] },
-          { name: "Bridal Belts", price: "₹399", img: IMG.bridal, sizes: ["Free Size"] },
-          { name: "Matching Accessories", price: "₹499", img: IMG.bridal, sizes: ["Free Size"] }
-        ]
-      }
-    }
+    defaultCat: 'bridal-lehengas',
+    catLabel: 'Bridal',
+    categories: BRIDAL_CATEGORIES
   },
   ethnic: {
-    defaultCat: 'saree-blouses', catLabel: 'Ethnic',
-    categories: {
-      'saree-blouses': {
-        label: 'Saree Blouses', items: [
-          { name: "Traditional Blouses", price: "₹999–₹5999", img: IMG.blouse, sizes: DEFAULT_SIZES },
-          { name: "Designer Blouses", price: "₹999–₹2999", img: IMG.blouse, sizes: DEFAULT_SIZES },
-          { name: "Embellished Blouses", price: "₹999–₹4999", img: IMG.blouse, sizes: DEFAULT_SIZES },
-          { name: "Customized Blouses", price: "₹499", img: IMG.blouse, sizes: DEFAULT_SIZES }
-        ]
-      },
-      lehengas: {
-        label: 'Lehengas', items: [
-          { name: "Bridal Lehengas", price: "₹3999", img: IMG.bridal, sizes: DEFAULT_SIZES },
-          { name: "Festive Lehengas", price: "₹4999", img: IMG.ethnic, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Lehengas", price: "₹5999", img: IMG.lehenga, sizes: DEFAULT_SIZES },
-          { name: "Designer Lehengas", price: "₹4999", img: IMG.lehenga, sizes: DEFAULT_SIZES }
-        ]
-      },
-      anarkalis: {
-        label: 'Anarkalis', items: [
-          { name: "Traditional Anarkalis", price: "₹2999", img: IMG.anarkali, sizes: DEFAULT_SIZES },
-          { name: "Designer Anarkalis", price: "₹999", img: IMG.anarkali, sizes: DEFAULT_SIZES },
-          { name: "Floor-Length Anarkalis", price: "₹1499", img: IMG.anarkali, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Anarkalis", price: "₹2999", img: IMG.anarkali, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'salwar-suits': {
-        label: 'Salwar Suits', items: [
-          { name: "Straight Salwar Suits", price: "₹1399", img: IMG.ethnic, sizes: DEFAULT_SIZES },
-          { name: "Designer Salwar Suits", price: "₹999", img: IMG.ethnic, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Suits", price: "₹1299", img: IMG.ethnic, sizes: DEFAULT_SIZES },
-          { name: "Traditional Suits", price: "₹1599", img: IMG.ethnic, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'sharara-sets': {
-        label: 'Sharara Sets', items: [
-          { name: "Sharara & Kurti Sets", price: "₹3999", img: IMG.sharara, sizes: DEFAULT_SIZES },
-          { name: "Festive Sharara Sets", price: "₹1599", img: IMG.sharara, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Sharara Sets", price: "₹2999", img: IMG.sharara, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'kurta-sets': {
-        label: 'Kurta Sets', items: [
-          { name: "Kurta & Pant Sets", price: "₹1499", img: IMG.kurti, sizes: DEFAULT_SIZES },
-          { name: "Kurta & Palazzo Sets", price: "₹1299", img: IMG.kurti, sizes: DEFAULT_SIZES },
-          { name: "Festive Kurta Sets", price: "₹999", img: IMG.kurti, sizes: DEFAULT_SIZES },
-          { name: "Designer Kurta Sets", price: "₹999", img: IMG.kurti, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'traditional-dresses': {
-        label: 'Traditional Dresses', items: [
-          { name: "Festival Wear", price: "₹9999", img: IMG.ethnic, sizes: DEFAULT_SIZES },
-          { name: "Celebration Outfits", price: "₹9999", img: IMG.ethnic, sizes: DEFAULT_SIZES },
-          { name: "Traditional Party Wear", price: "₹15999", img: IMG.ethnic, sizes: DEFAULT_SIZES },
-          { name: "Designer Ethnic Dresses", price: "₹9999", img: IMG.ethnic, sizes: DEFAULT_SIZES }
-        ]
-      }
-    }
+    defaultCat: 'saree-blouses',
+    catLabel: 'Ethnic',
+    categories: ETHNIC_CATEGORIES
   },
   western: {
-    defaultCat: 'western-dresses', catLabel: 'Western',
-    categories: {
-      'western-dresses': {
-        label: 'Western Dresses', items: [
-          { name: "Mini Dresses", price: "₹999", img: IMG.dress, sizes: DEFAULT_SIZES },
-          { name: "Midi Dresses", price: "₹1699", img: IMG.midi, sizes: DEFAULT_SIZES },
-          { name: "Maxi Dresses", price: "₹1699", img: IMG.maxi, sizes: DEFAULT_SIZES },
-          { name: "Casual Dresses", price: "₹1599", img: IMG.dress, sizes: DEFAULT_SIZES },
-          { name: "Party Dresses", price: "₹1999", img: IMG.party, sizes: DEFAULT_SIZES },
-          { name: "Evening Dresses", price: "₹1699", img: IMG.midi, sizes: DEFAULT_SIZES }
-        ]
-      },
-      bodycon: {
-        label: 'Bodycon Dresses', items: [
-          { name: "Casual Bodycon", price: "₹999", img: IMG.dress, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Bodycon", price: "₹1799", img: IMG.party, sizes: DEFAULT_SIZES },
-          { name: "Evening Bodycon", price: "₹1599", img: IMG.midi, sizes: DEFAULT_SIZES }
-        ]
-      },
-      jumpsuits: {
-        label: 'Jumpsuits', items: [
-          { name: "Casual Jumpsuits", price: "₹999", img: IMG.jumpsuit, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Jumpsuits", price: "₹2499", img: IMG.jumpsuit, sizes: DEFAULT_SIZES },
-          { name: "Designer Jumpsuits", price: "₹1999", img: IMG.jumpsuit, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'western-coords': {
-        label: 'Co-Ord Sets', items: [
-          { name: "Top & Skirt Sets", price: "₹1499", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Top & Trouser Sets", price: "₹1999", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Crop Top Sets", price: "₹1499", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Co-Ords", price: "₹1999", img: IMG.coord, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'western-skirts': {
-        label: 'Skirts', items: [
-          { name: "Mini Skirts", price: "₹499", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Midi Skirts", price: "₹799", img: IMG.midi, sizes: DEFAULT_SIZES },
-          { name: "Maxi Skirts", price: "₹699", img: IMG.maxi, sizes: DEFAULT_SIZES },
-          { name: "A-Line Skirts", price: "₹599", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Flared Skirts", price: "₹699", img: IMG.women, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'western-tops': {
-        label: 'Tops', items: [
-          { name: "Crop Tops", price: "₹499", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Casual Tops", price: "₹599", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Designer Tops", price: "₹799", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Peplum Tops", price: "₹599", img: IMG.women, sizes: DEFAULT_SIZES },
-          { name: "Party Wear Tops", price: "₹999", img: IMG.women, sizes: DEFAULT_SIZES }
-        ]
-      },
-      'western-trousers': {
-        label: 'Trousers', items: [
-          { name: "Straight Trousers", price: "₹1299", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Wide-Leg Trousers", price: "₹1299", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Flared Trousers", price: "₹999", img: IMG.coord, sizes: DEFAULT_SIZES },
-          { name: "Palazzo Pants", price: "₹899", img: IMG.coord, sizes: DEFAULT_SIZES }
-        ]
-      }
-    }
+    defaultCat: 'western-dresses',
+    catLabel: 'Western',
+    categories: WESTERN_CATEGORIES
   }
 };
 
